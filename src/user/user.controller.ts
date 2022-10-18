@@ -4,7 +4,7 @@ import { Body, Controller, Post } from "@nestjs/common";
 @Controller("user")
 export class UserController{
     @Post()
-    create(@Body() createUserDto: CreateUserDto){
-        createUserDto
+    async create(@Body() createUserDto: CreateUserDto){
+        await createUserDto
     }
 }

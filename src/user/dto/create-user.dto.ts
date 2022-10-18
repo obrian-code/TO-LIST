@@ -1,23 +1,23 @@
 import {
     Length,
-    validate
-  } from 'class-validator';
+    IsString,
+    IsEmail,
+    IsNotEmpty
+} from 'class-validator';
 
 export class CreateUserDto {
-    @Length(3,50)
+    @IsNotEmpty()
+    @IsString()
+    @Length(3, 50, { message: "el nombre debe tener como minimo 3 caracteres y como maximo 50" })
     readonly nombre: string;
 
-    @Length(15,100)
+    @IsNotEmpty()
+    @IsEmail()
+    @Length(10, 100, { message: "el correo debe tener como minimo 15 caracteres y como maximo 100" })
     readonly correo: string;
 
-    @Length(6,20)
-    readonly contraseña: string;
+    @IsNotEmpty()
+    @IsString()
+    @Length(6, 20, { message: "el contraseña debe tener como minimo 6 caracteres y como maximo 50" })
+    readonly contrasena: string;
 }
-
-validate(CreateUserDto).then(errors =>{
-    if(errors.length>0){
-        console.log("error de validacion", errors);
-    }else{
-        console.log("paso validaciones")
-    }
-})
