@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule } from "@nestjs/config";
+import { AuthModule } from './auth/auth.module';
 import config from "./config/config";
 
 
@@ -12,7 +13,7 @@ import config from "./config/config";
     ConfigModule.forRoot({
       envFilePath: '.env'
     }),
-    MongooseModule.forRoot(config().DB.HOST + config().DB.USER + ":" + config().DB.PASSWORD + "@" + config().DB.DATABASE + "?retryWrites=true&w=majority"), UserModule
+    MongooseModule.forRoot(config().DB.HOST + config().DB.USER + ":" + config().DB.PASSWORD + "@" + config().DB.DATABASE + "?retryWrites=true&w=majority"), UserModule, AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

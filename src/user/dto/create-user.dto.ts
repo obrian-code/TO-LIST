@@ -20,4 +20,7 @@ export class CreateUserDto {
     @IsString()
     @Length(6, 20, { message: "el contraseña debe tener como minimo 6 caracteres y como maximo 50" })
     readonly contrasena: string;
+
+
+    readonly refreshToken: string;
 }
