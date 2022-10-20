@@ -2,13 +2,13 @@ import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { Request } from "express";
 import { Injectable } from "@nestjs/common";
-import config from "./../../config/config";
+import config from "src/config/config";
 
 @Injectable()
 export class RefreshTokenStrategy extends PassportStrategy(
     Strategy,
     'jwt-refresh',
-  ){
+) {
 
     constructor() {
         super({
@@ -16,6 +16,7 @@ export class RefreshTokenStrategy extends PassportStrategy(
             secretOrkey: config().JWT.REFRESH,
             passReqToCallback: true,
         })
+        console.log("-->" + config().JWT.REFRESH)
     }
 
     valide(req: Request, payload: any) {
