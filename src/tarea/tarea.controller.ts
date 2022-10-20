@@ -1,5 +1,6 @@
+import { JwtAuthGuard } from './../user/jwt-auth.guard';
 import { CreateTareaDto } from './dto/create-tarea.dto';
-import { Body, Controller, Post, Get, Param, Put, Delete } from '@nestjs/common/decorators';
+import { Body, Controller, Post, Get, Param, Put, Delete, UseGuards } from '@nestjs/common/decorators';
 import { TareaService } from './tarea.service';
 
 @Controller("tarea")
@@ -10,7 +11,7 @@ export class TareaController {
     async create(@Body() createTareaDto: CreateTareaDto) {
         return await this.tareaService.create(createTareaDto)
     }
-
+    @UseGuards(JwtAuthGuard)
     @Get(":id")
     async findAllForUser(@Param("id") idUser: string) {
         return await this.tareaService.findAllForUser(idUser);

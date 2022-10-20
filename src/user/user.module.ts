@@ -1,3 +1,4 @@
+import { JwtStrategy } from './jwt.strategy';
 import { jwtConstants } from './jwt.constants';
 import { User, UserSchema } from './schemas/user.schema';
 import { UserService } from './user.service';
@@ -12,7 +13,7 @@ import { JwtModule } from '@nestjs/jwt';
         signOptions: { expiresIn: '60s' },
     })],
     controllers: [UserController],
-    providers: [UserService],
+    providers: [UserService, JwtStrategy],
 })
 
 export class UserModule { }
