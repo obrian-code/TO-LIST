@@ -1,3 +1,4 @@
+import { TareaModule } from './tarea/tarea.module';
 import { UserModule } from './user/user.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -12,7 +13,9 @@ import config from "./config/config";
     ConfigModule.forRoot({
       envFilePath: '.env'
     }),
-    MongooseModule.forRoot(config().DB.HOST + config().DB.USER + ":" + config().DB.PASSWORD + "@" + config().DB.DATABASE + "?retryWrites=true&w=majority"), UserModule
+    MongooseModule.forRoot(config().DB.HOST + config().DB.USER + ":" + config().DB.PASSWORD + "@" + config().DB.DATABASE + "?retryWrites=true&w=majority"),
+    UserModule,
+    TareaModule
   ],
   controllers: [AppController],
   providers: [AppService],
