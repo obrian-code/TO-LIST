@@ -13,4 +13,16 @@ export class TareaService {
     async create(createTareaDto: CreateTareaDto): Promise<Tarea> {
         return this.tareaModel.create(createTareaDto);
     }
+
+    async findAllForUser(idUser: string): Promise<Tarea[]> {
+        return this.tareaModel.find({ idUsuario: idUser }).select("tarea").exec()
+    }
+
+    async update(idTarea: string, tareaActualizada: CreateTareaDto): Promise<Tarea> {
+        return this.tareaModel.findByIdAndUpdate({ _id: idTarea }, tareaActualizada, { new: true })
+    }
+
+    async remove(idTarea: string) {
+        return this.tareaModel.findByIdAndRemove({ _id: idTarea }).exec();
+    }
 }

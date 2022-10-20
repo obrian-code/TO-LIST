@@ -1,8 +1,8 @@
 import { Length, IsNotEmpty, IsString } from "class-validator"
 export class CreateTareaDto {
 
-    @IsNotEmpty()
-    @IsString()
+    //@IsNotEmpty()
+    //@IsString()
     readonly idUsuario: string;
 
     @IsNotEmpty()
