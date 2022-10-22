@@ -25,9 +25,9 @@ export class UserService {
     async login(loginAuthDto: LoginAuthDto) {
         const { correo, contrasena } = loginAuthDto;
         const findUser = await this.userModel.findOne({ correo });
-        console.log("----------------------------------------------------")
-        console.log(findUser)
-        console.log("----------------------------------------------------")
+        // console.log("----------------------------------------------------")
+        // console.log(findUser)
+        // console.log("----------------------------------------------------")
         if (!findUser) throw new HttpException("ingrese un usuario valido", 404);
 
         const userValidate = await bcrypt.compare(contrasena, findUser.contrasena);

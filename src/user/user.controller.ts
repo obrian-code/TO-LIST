@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { LoginAuthDto } from './dto/login-auth.dto';
 import { Body, Controller, Post, HttpException } from "@nestjs/common";
 
-@Controller("user")
+@Controller("auth")
 export class UserController {
     constructor(private readonly userService: UserService) { }
 
