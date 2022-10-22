@@ -11,7 +11,8 @@ import config from "./config/config";
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env'
+      envFilePath: '.env',
+      cache: true,
     }),
     MongooseModule.forRoot(config().DB.HOST + config().DB.USER + ":" + config().DB.PASSWORD + "@" + config().DB.DATABASE + "?retryWrites=true&w=majority"),
     UserModule,
