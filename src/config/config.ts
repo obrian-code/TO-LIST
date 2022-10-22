@@ -6,7 +6,9 @@ export default () => {
     return ({
         JWT: {
             SECRET: process.env.JWTSECRET || "devsecrettoken",
+            EXPIREIN_SECRET: process.env.EXPIREIN_SECRET || "2m",
             REFRESH: process.env.JWTREFRESH || "devrefreshtoken",
+            EXPIREIN_REFRESH: process.env.EXPIREIN_REFRESH || "4m",
         },
 
         DB: {
